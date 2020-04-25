@@ -5,6 +5,9 @@
 	$invalid ='';
 	
 	session_start();
+	if(isset($_SESSION['loging_user'])){
+		header('location:index.php');
+	}
 
 	if(isset($_POST['login'])){
 		$email = mysqli_escape_string($conn,$_POST['email']);

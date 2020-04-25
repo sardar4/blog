@@ -1,25 +1,23 @@
+
+<?php
+	include 'session.php';
+?>
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
-<head>
-	<title>Profile | Klorofil - Free Bootstrap Dashboard Template</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-	<!-- MAIN CSS -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="assets/css/demo.css">
-	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
-</head>
+<?php
+	include 'layout/css-layout/css-layout.php';
+?>
 
 <body>
 	<!-- WRAPPER -->
@@ -68,7 +66,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span><?=$row['name'];?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -127,22 +125,10 @@
 											<div class="overlay"></div>
 											<div class="profile-main">
 												<img src="assets/img/user-medium.png" class="img-circle" alt="Avatar">
-												<h3 class="name">Samuel Gold</h3>
+												<h3 class="name"><?=$row['name'];?></h3>
 												<span class="online-status status-available">Available</span>
 											</div>
-											<div class="profile-stat">
-												<div class="row">
-													<div class="col-md-4 stat-item">
-														45 <span>Projects</span>
-													</div>
-													<div class="col-md-4 stat-item">
-														15 <span>Awards</span>
-													</div>
-													<div class="col-md-4 stat-item">
-														2174 <span>Points</span>
-													</div>
-												</div>
-											</div>
+											
 										</div>
 										<!-- END PROFILE HEADER -->
 										<!-- PROFILE DETAIL -->
@@ -150,9 +136,8 @@
 											<div class="profile-info">
 												<h4 class="heading">Basic Info</h4>
 												<ul class="list-unstyled list-justify">
-													<li>Birthdate <span>24 Aug, 2016</span></li>
-													<li>Mobile <span>(124) 823409234</span></li>
-													<li>Email <span>samuel@mydomain.com</span></li>
+													<li>Mobile <span><?=$row['mobile'];?></span></li>
+													<li>Email <span><?=$row['email'];?></span></li>
 													<li>Website <span><a href="https://www.themeineed.com">www.themeineed.com</a></span></li>
 												</ul>
 											</div>
