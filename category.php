@@ -1,3 +1,35 @@
+
+<?php
+    $error ='';
+    $alert ='';
+    include 'batadese/conect.php';
+    if(isset($_POST['category'])){
+        $name = mysqli_escape_string($conn,$_POST['name']);
+        $details = mysqli_escape_string($conn,$_POST['details']);
+
+        if(empty($name) || empty($details)){
+            $error = "This filled can not be empty";
+        }
+        else{
+            $sql = "INSERT INTO categories (name,details) VALUES ('$name','$details')";
+            $query = mysqli_query($conn,$sql);
+            if($query){
+                $alert = "Your Category is Successfuly Inserted";
+            }
+            else{
+                $alert = "SOMETHING WENT WRONG".mysqli_error($query);
+            }
+        }
+    }
+?>
+
+
+
+
+
+
+
+
 <?php
 	include 'session.php';
 ?>
@@ -18,37 +50,12 @@
 	<div id="wrapper">
 		<!-- NAVBAR -->
         <?php 
-			include 'layout/css-layout/navbar.php' ;
+			include 'layout/navbar.php' ;
 	    ?>
 		<!-- END NAVBAR -->
-		<!-- LEFT SIDEBAR -->
-		<div id="sidebar-nav" class="sidebar">
-			<div class="sidebar-scroll">
-				<nav>
-					<ul class="nav">
-						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-						<li><a href="elements.html" class="active"><i class="lnr lnr-code"></i> <span>Elements</span></a></li>
-						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
-						<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Panels</span></a></li>
-						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
-						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="page-profile.html" class="">Profile</a></li>
-									<li><a href="page-login.html" class="">Login</a></li>
-									<li><a href="page-lockscreen.html" class="">Lockscreen</a></li>
-								</ul>
-							</div>
-						</li>
-						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
-						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-		<!-- END LEFT SIDEBAR -->
+        <?php 
+			include 'layout/sidebar.php' ;
+	    ?>
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
@@ -62,6 +69,9 @@
                                 <!-- END BUTTONS -->
                                 <!-- INPUTS -->
                                 <div class="panel">
+                                        <div class="alert alert-danger alert-right">
+                                            <h3 ><?=$alert;?></h3>
+                                        </div>    
                                     <div class="panel-heading ">
                                         <h3 class="panel-title">Inputs</h3>
                                     </div>
@@ -70,15 +80,17 @@
                                             <div class="form-group">
                                                 <label for="name" class="control-label ">Name</label>
                                                 <input style="width:50%;" type="text" class="form-control" name="name" value="" placeholder="Enter Your Category"  id="name">
+                                                <span class="text-danger"><?=$error;?></span>
                                                
                                             </div>
                                             <div class="form-group">
                                                 <label for="details" class="control-label">Details</label>
                                                 <textarea id="details" rows="4" cols="50" class="form-control" style="width:50%;" name="details" placeholder="add details">
                                                 </textarea>
+                                                <span class="text-danger"><?=$error;?></span>
                                                
                                             </div>
-                                            <button type="submit"  class="btn btn-primary btn-lg btn-block" style="width:50%;" name="category">Add New Category</button>
+                                            <button type="submit"  class="btn btn-primary btn-lg btn-block" style="width:50%;" name="category">Add Category</button>
                                         </form>
                                         
                                         

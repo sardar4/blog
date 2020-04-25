@@ -15,7 +15,7 @@
 	<!-- WRAPPER -->
 	<div id="wrapper">
 	<?php 
-			include 'layout/css-layout/navbar.php' ;
+			include 'layout/navbar.php' ;
 	?>
 		<!-- LEFT SIDEBAR -->
 		<div id="sidebar-nav" class="sidebar">
